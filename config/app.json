@@ -1,0 +1,25 @@
+{
+    "app_name": "Smartsky Freight Management Application",
+    "app_version": "1.0.0",
+    "app_url": "127.0.0.1",
+    "app_base": "/smartsky",
+    "api": {
+        "_url": "/api",
+        "_version": "/1.0"
+    },
+    "mongodb": {
+        "db": "smartsky_db",
+        "host": "127.0.0.1",
+        "username": "",
+        "port": "",
+        "collections": {
+            "user": "smart_user",
+            "booking": "smart_booking"
+        }
+    },
+    "api_query_limit": 10,
+    "rounds": 15,
+    "subject": {
+        "verify": "Email Confirmation"
+    }
+}
