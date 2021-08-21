@@ -14,8 +14,6 @@ const initAuth = {
         if (!param.email)error.push('Provide email address')
         if (!param.password)error.push('Pasword cannot be empty')
         if (!param.address)error.push('Provide address of user')
-        if (!param.state)error.push('User must select a state')
-        if (!param.zipcode)error.push('Provide zip code')
 
         if (error.length == 0) {
             var data = {
