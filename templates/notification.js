@@ -6,7 +6,7 @@ const notify = {
         const html =`
         <p>Hi ${option.fname},</p>
         <p>Thank you for your registration. Click the button below to activating your account.</p>
-        <a href="${'http://localhost:30001/smartsky/api/1.0/auth/verify?user='+option._id+'&passkey='+option.passkey}">Verify</a>
+        <a href="${'https://smart-sky.herokuapp.com/smartsky/api/1.0/auth/verify?user='+option._id+'&passkey='+option.passkey}">Verify</a>
         `
         return html
     },
