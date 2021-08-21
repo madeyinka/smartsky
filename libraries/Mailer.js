@@ -1,5 +1,5 @@
 const mailgun = require('mailgun-js')
-const dotenv = require('dotenv')
+const dotenv = require('dotenv').config()
 
 const Mailer = {
 

@@ -14,10 +14,12 @@
         "port": "",
         "collections": {
             "user": "smart_user",
-            "booking": "smart_booking"
+            "booking": "smart_booking",
+            "airport": "smart_airport"
         }
     },
     "api_query_limit": 10,
+    "page_start": 1,
     "rounds": 15,
     "subject": {
         "verify": "Email Confirmation"

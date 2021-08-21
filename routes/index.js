@@ -6,6 +6,7 @@ const api_url = _config.app_base+_config.api._url+_config.api._version
 
 /**  API routes **/
 router.use(api_url + '/auth', require('./auth'))
-
+router.use(api_url + '/booking', require('./booking'))
+router.use(api_url + '/airport', require('./airport'))
 
 module.exports = router
