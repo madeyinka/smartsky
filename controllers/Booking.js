@@ -6,7 +6,7 @@ const initBooking = {
 
     make_booking: (param, callback) => { //check if userid is passed
         const id = "#QUO-" + Util.rand_str(8, '1234567890')
-        const data = {booking_id: id, origin:param.origin, destination:param.destination, shipment_date:param.shipment_date,
+        const data = {quote_id: id, origin:param.origin, destination:param.destination, shipment_date:param.shipment_date,
         submission:param.submission, location:param.location, recipient:param.recipient, cargo:param.cargo, total_cost:param.total_cost,
         total_volume:param.total_volume, total_weight:param.total_weight,status:param.status}
         bookModel.save(data, (resp) => {
