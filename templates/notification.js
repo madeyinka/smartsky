@@ -15,7 +15,7 @@ const notify = {
         const html = `
         <p>Hi ${option.fname},</p>
         <p>Click on the link below to reset your password</p>
-        <a href="${'http://smartsky.com.ng/reset?id='+option._id+'&key='+option.passkey}">Reset</a>
+        <a href="${'https://smart-sky.herokuapp.com/smartsky/api/1.0/reset?id='+option._id+'&key='+option.passkey}">Reset</a>
         `
         return html
     }
