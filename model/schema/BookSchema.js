@@ -11,10 +11,12 @@ var SchemaDef = new Schema({
     submission: {type:String, enum:["pickup","dropoff"]},
     location: {type:String, default:""},
     recipient: {type:Object}, //name, email, phone, address
-    cargo: {type:Array}, //length, width, height, weight, package
+    cargoes: {type:Array}, //length, width, height, weight, package
+    unit:{type:String, default:""},
+    dim_weight:{type:Number},
+    actual_weight: {type:Number},
+    chargable_weight:{type:Number},
     total_cost:{type:Number},
-    total_weight: {type:Number},
-    total_volume: {type:Number},
     user: {type:String},
     status: {type:String, enum:["pending","active"], default:"pending"}
 }, {timestamps:true})

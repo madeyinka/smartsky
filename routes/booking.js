@@ -3,8 +3,14 @@ const router = express.Router()
 const Util = require('./../libraries/Utility')
 const Booking = require('./../controllers/Booking')
 
-router.post('/add-booking', (req, res) => {
+router.post('/create', (req, res) => {
     Booking.make_booking(Util.param_extract(req), (state) => {
+        Util.resp(res).json(state)
+    })
+})
+
+router.post('/modify', (req, res) => {
+    Booking.modify(Util.param_extract(req), (state) => {
         Util.resp(res).json(state)
     })
 })
