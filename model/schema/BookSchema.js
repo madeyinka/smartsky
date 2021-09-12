@@ -10,8 +10,8 @@ var SchemaDef = new Schema({
     shipment_date: {type:Date},
     submission: {type:String, enum:["pickup","dropoff"]},
     location: {type:String, default:""},
-    recipient: {type:Object}, //name, email, phone, address
-    cargoes: {type:Array}, //length, width, height, weight, package
+    recipient: {type:Object},
+    cargoes: {type:Array}, 
     unit:{type:String, default:""},
     dim_weight:{type:Number},
     actual_weight: {type:Number},

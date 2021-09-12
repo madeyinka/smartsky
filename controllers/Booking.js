@@ -10,6 +10,7 @@ const initBooking = {
         submission:param.submission, location:param.location, recipient:param.recipient, cargoes:param.cargoes, total_cost:param.total_cost,
         unit:param.unit,dim_weight:param.dim_weight,actual_weight:param.actual_weight,chargable_weight:param.chargable_weight,status:param.status}
         bookModel.save(data, (resp) => {
+            console.log(resp)
             if (!resp._id)
                 return callback(Resp.error({msg:"Something went wrong saving information", resp:null}))
             else 
