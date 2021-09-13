@@ -5,7 +5,7 @@ const Booking = require('./../controllers/Booking')
 const { authenticate } = require('./../middleware/Authenticate')
 
 router.post('/create', authenticate, (req, res) => {
-    Booking.make_booking(Util.param_extract(req), (state) => {
+    Booking.make_booking(req, (state) => {
         Util.resp(res).json(state)
     })
 })

@@ -22,7 +22,6 @@ const Utility = {
             data = req.fields
         else if(req.body)
             data = req.body;
-
         return data
     },
 
