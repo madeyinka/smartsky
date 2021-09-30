@@ -18,6 +18,10 @@ const initBooking = {
         })
     },
 
+    update_booking: (req, callback) => { //ensure sender is user
+
+    },
+
     by_identity: (identity, callback) => {
         bookModel.findOne({conditions:{_id:identity}},function(state){
             if(state && !state.error)
@@ -25,6 +29,15 @@ const initBooking = {
             else
                 return callback(Resp.error({msg:'No data found for Query',resp:null}))
         }) 
+    },
+
+    pull: (param, callback) => {
+        bookModel.findAll((Util.param_filter(param)), (state) => {
+            if (!state.error) {
+                return callback(Resp.success({msg:state.length + " result(s) found", total:state.length, resp:state}))
+            } else 
+                return callback(Resp.error({msg:"No result found", resp:null}))
+        })
     }
 
 }

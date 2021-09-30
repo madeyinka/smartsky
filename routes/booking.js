@@ -11,13 +11,19 @@ router.post('/create', authenticate, (req, res) => {
 })
 
 router.post('/modify', (req, res) => {
-    Booking.modify(Util.param_extract(req), (state) => {
+    Booking.update_booking(Util.param_extract(req), (state) => {
         Util.resp(res).json(state)
     })
 })
 
 router.get('/by-identity', (req, res) => {
     Booking.by_identity(req.query.identity, (state) => {
+        Util.resp(res).json(state)
+    })
+})
+
+router.get('/pull', (req, res) => {
+    Booking.pull(req.query, (state) => {
         Util.resp(res).json(state)
     })
 })
