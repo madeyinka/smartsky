@@ -2,9 +2,10 @@ const mongoose = require('mongoose')
 const _config = require('./../../config/app.json')
 const _collection = _config.mongodb.collections
 
-var Schema = mongoose.Schema
+var Schema = mongoose.Schema,
+    ObjectId = Schema.ObjectId;
 var SchemaDef = new Schema({
-    quote_id: {type:String, unique:true, default:""},
+    uuid: {type:String, unique:true, default:""},
     origin: {type:String, default:""},
     destination: {type:String, default:""},
     shipment_date: {type:Date},
@@ -17,7 +18,8 @@ var SchemaDef = new Schema({
     actual_weight: {type:Number},
     chargable_weight:{type:Number},
     total_cost:{type:Number},
-    user: {type:String},
+    user: {type:ObjectId},
+    user_profile: {type:Object},
     status: {type:String, enum:["pending","active"], default:"pending"}
 }, {timestamps:true})
 

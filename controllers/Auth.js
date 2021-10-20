@@ -22,9 +22,11 @@ const initAuth = {
                 email: param.email,
                 password: Util.get_hash(param.password),
                 phone: param.phone,
+                organisation:param.organisation,
                 passkey: Util.rand_str(25),
                 address: param.address,
                 state: param.state,
+                lga:param.lga,
                 zipcode: param.zipcode
             }
             userModel.save(data, (resp) => {
@@ -52,8 +54,7 @@ const initAuth = {
                         const data = {status: "active", passkey:Util.rand_str(25)}
                         userModel.update(data, {_id:state._id}, (resp) => {
                             if (resp._id) {
-                                //redirect to frontend login page...
-                                res.redirect('https://cargo-one.netlify.app/signin')
+                                //redirect to login page
                             }
                         })
                     } else {
@@ -114,14 +115,10 @@ const initAuth = {
     },
 
     userContext: (param, callback) => {
-        var userInfo = {}
         userModel.findOne({conditions:{_id:param}}, (user) => {
             if (user) {
-                userInfo.id = user._id
-                userInfo.name = user.fname
-                userInfo.type = user.type
-                userInfo.status = user.status
-                return callback(Resp.success({msg:"user information found", resp:userInfo}))
+                const id = user._id
+                return callback(Resp.success({msg:"user information found", resp:id}))
             } else {
                 return callback(Resp.error({msg:"Unauthorized user"}))
             }

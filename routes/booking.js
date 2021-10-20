@@ -11,7 +11,7 @@ router.post('/create', authenticate, (req, res) => {
 })
 
 router.post('/modify', (req, res) => {
-    Booking.update_booking(Util.param_extract(req), (state) => {
+    Booking.update_booking(req, (state) => {
         Util.resp(res).json(state)
     })
 })
@@ -22,7 +22,7 @@ router.get('/by-identity', (req, res) => {
     })
 })
 
-router.get('/pull', (req, res) => {
+router.get('/pull', authenticate, (req, res) => {
     Booking.pull(req.query, (state) => {
         Util.resp(res).json(state)
     })

@@ -57,10 +57,7 @@ const initAirport = {
     pull: (param, callback) => {
         airportModel.findAll(Util.param_filter(param), (state) => {
             if (!state.error) {
-                airportModel.count((Util.param_filter(param)).conditions, (count) => {
-                    state.push({"total": count})
-                    return callback(Resp.success({msg:"Query Results", resp:state}))
-                })
+                return callback(Resp.success({msg:"Query Results",total:state.length,resp:state}))
             } else {
                 return callback(Resp.error({msg:"No result found for search", resp:null}))
             }

@@ -15,7 +15,8 @@
         "collections": {
             "user": "smart_user",
             "booking": "smart_booking",
-            "airport": "smart_airport"
+            "airport": "smart_airport",
+            "invoice": "smart_invoice"
         }
     },
     "api_query_limit": 10,
