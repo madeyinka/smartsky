@@ -8,8 +8,8 @@ const Connector = {
     MongoDB: () => {
         if (Connector._mongo == null) {
             const mongoose = require('mongoose')
-            //const url = process.env.MONGODB_URI
-            const url = 'mongodb://'+_config.mongodb.host+':'+_config.mongodb.port+'/'+_config.mongodb.db
+            const url = process.env.MONGODB_URI
+            //const url = 'mongodb://'+_config.mongodb.host+':'+_config.mongodb.port+'/'+_config.mongodb.db
             Connector._mongo = mongoose.connection
 
             Connector._mongo.once('open', () => {})

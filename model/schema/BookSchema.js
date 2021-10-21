@@ -3,9 +3,8 @@ const _config = require('./../../config/app.json')
 const _collection = _config.mongodb.collections
 
 var Schema = mongoose.Schema,
-    ObjectId = Schema.ObjectId;
-var SchemaDef = new Schema({
-    order_id: {type:String, default:""},
+    SchemaDef = new Schema({
+    uuid: {type:String, unique:true, default:""},
     origin: {type:String, default:""},
     destination: {type:String, default:""},
     shiping_date: {type:Date},
@@ -24,7 +23,7 @@ var SchemaDef = new Schema({
     express:{type:String},
     insurance:{type:String},
     packaging:{type:String},
-    user: {type:ObjectId},
+    user: {type:String},
     list:{type:String},
     description:{type:String},
     status: {type:String, enum:["pending","active"], default:"pending"}
