@@ -6,10 +6,11 @@ const initBooking = {
 
     make_booking: (req, callback) => {
         const param = req.body
-        const data = {uuid:Util.rand_str(13, '1234567890'), origin:param.origin, destination:param.destination, shipment_date:param.shipment_date,
-        submission:param.submission,location:param.location,recipient:param.recipient,cargoes:param.cargoes,total_cost:param.total_cost,
-        unit:param.unit,dim_weight:param.dim_weight,actual_weight:param.actual_weight,chargable_weight:param.chargable_weight,user:req.userInfo.id,status:param.status}
+        const data = {order_id:param.order_id,origin:param.origin,destination:param.destination,shiping_date:param.shiping_date,
+        service_type:param.service_type,location:param.location,receiver:param.receiver,length:param.length,width:param.width,height:param.height,quantity:param.quantity,weight:param.weight,cost:param.cost,
+        dim_weight:param.dim_weight,act_weight:param.act_weight,charge_weight:param.charge_weight,express:param.express,insurance:param.insurance,packaging:param.packaging,user:req.userInfo.id,status:param.status}
         bookModel.save(data, (resp) => {
+            console.log(resp)
             if (!resp._id)
                 return callback(Resp.error({msg:"Something went wrong saving information", resp:null}))
             else 
@@ -32,6 +33,7 @@ const initBooking = {
         if(param.actual_weight)data.actual_weight = param.actual_weight
         if(param.chargable_weight)data.chargable_weight = param.chargable_weight
         if(param.total_cost)data.total_cost = param.total_cost
+        if(param.status)data.status = param.status
 
         if (error.length == 0) {
             if (data) {
