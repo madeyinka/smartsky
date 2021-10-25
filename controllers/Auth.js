@@ -27,19 +27,21 @@ const initAuth = {
                 address: param.address,
                 state: param.state,
                 lga:param.lga,
-                zipcode: param.zipcode
+                zipcode: param.zipcode,
+                status:param.status
             }
             userModel.save(data, (resp) => {
                 if (!resp._id) 
                     return callback(Resp.error({msg:"User information already exists", resp:null}))
                 else {
-                    const option = {email:resp.email,subject:_config.subject.verify,message:verify(resp)}
-                    mailer.sendMail(option, (msg) => {
-                        if (msg && msg.id) 
-                            return callback(Resp.success({msg: "Check your email for verification", resp:resp}))
-                        else
-                            return callback(Resp.error({msg: "Email service unavailable", resp:resp}))
-                    })
+                    return callback(Resp.success({msg: "User account created", resp:resp}))
+                    // const option = {email:resp.email,subject:_config.subject.verify,message:verify(resp)}
+                    // mailer.sendMail(option, (msg) => {
+                    //     if (msg && msg.id) 
+                    //         return callback(Resp.success({msg: "Check your email for verification", resp:resp}))
+                    //     else
+                    //         return callback(Resp.error({msg: "Email service unavailable", resp:resp}))
+                    // })
                 }
             })
         } else 

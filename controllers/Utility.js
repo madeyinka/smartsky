@@ -31,7 +31,6 @@ var Utility = {
     get_invoices: (param, callback)  => {
         var invoiceModel = require('./../model/InvoiceModel')
         invoiceModel.findAll((Util.param_filter(param)), (state) => {
-            console.log(state)
             if (!state.error) {
                 return callback(Resp.success({msg:state.length + " result(s) found", total:state.length, resp:state}))
             } else 
