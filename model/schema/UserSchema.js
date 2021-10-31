@@ -18,7 +18,7 @@ var SchemaDef = new Schema({
     lga:{type:String, default:""},
     zipcode: {type:String, default:""},
     avatar: {type:String, default:""},
-    status: {type:String, enum:["active", "inactive", "pending"], default:"pending"}
+    status: {type:String, enum:["active", "inactive", "pending"], default:"active"}
 },{timestamps:true})
 
 var modelInit = mongoose.model(_collection.user, SchemaDef)
