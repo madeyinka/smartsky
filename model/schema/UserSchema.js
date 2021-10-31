@@ -4,6 +4,7 @@ const _collection = _config.mongodb.collections
 
 var Schema = mongoose.Schema
 var SchemaDef = new Schema({
+    name: {type:String, default:""},
     fname: {type:String, default:""},
     lname: {type:String, default:""},
     email: {type:String, unique:true, lower:true, default:""},
@@ -11,7 +12,7 @@ var SchemaDef = new Schema({
     phone: {type:String, default:""},
     password: {type:String},
     passkey: {type:String, default:""},
-    type: {type:String, enum:["regular", "agent", "admin"], default:"regular"},
+    type: {type:String, enum:["individual", "organisation", "agent", "admin"], default:"regular"},
     address: {type:String, default:""},
     state: {type:String, default:""},
     lga:{type:String, default:""},

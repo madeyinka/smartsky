@@ -63,7 +63,7 @@ const Utility = {
 
     generate_token:  function(payload) {
         const jwt = require('jsonwebtoken')
-        const token = jwt.sign(payload, process.env.JWT_SECRET, {expiresIn: process.env.JWT_EXPIRY})
+        const token = jwt.sign(payload, process.env.JWT_SECRET)
         return token;
     },
 

@@ -16,7 +16,8 @@
             "user": "smart_user",
             "booking": "smart_booking",
             "airport": "smart_airport",
-            "invoice": "smart_invoice"
+            "invoice": "smart_invoice",
+            "order": "smart_order"
         }
     },
     "api_query_limit": 10,
@@ -24,5 +25,6 @@
     "rounds": 15,
     "subject": {
         "verify": "Email Confirmation"
-    }
+    },
+    "site_url":"http://localhost:4200/main/index"
 }

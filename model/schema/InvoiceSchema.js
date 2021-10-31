@@ -9,6 +9,7 @@ var SchemaDef = new Schema({
     item: {type:String, default:""},
     description: {type:String, default:""},
     amount: {type:Number},
+    email:{type:String},
     issue_date:{type:Date},
     due_date:{type:Date},
     user:{type:Object},

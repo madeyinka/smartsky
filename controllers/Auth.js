@@ -9,26 +9,24 @@ const initAuth = {
 
     register: (param, callback) => {
         var error = []
-        if (!param.firstname)error.push('Provide first name')
-        if (!param.lastname)error.push('Provide last name')
-        if (!param.email)error.push('Provide email address')
-        if (!param.password)error.push('Pasword cannot be empty')
-        if (!param.address)error.push('Provide address of user')
+        if (!param.name)error.push('Name is required')
+        if (!param.email)error.push('Email is required')
+        if (!param.phone)error.push('Phone Number is required')
+        if (!param.address)error.push('Address is required')
 
         if (error.length == 0) {
             var data = {
-                fname: param.firstname,
-                lname: param.lastname,
-                email: param.email,
-                password: Util.get_hash(param.password),
-                phone: param.phone,
+                name:param.name,
+                email:param.email,
+                phone:param.phone,
+                address:param.address,
+                state:param.state,
+                lga:param.lga,
+                password:Util.get_hash(param.password),
                 organisation:param.organisation,
                 passkey: Util.rand_str(25),
-                address: param.address,
-                state: param.state,
-                lga:param.lga,
-                zipcode: param.zipcode,
-                status:param.status
+                type: param.type,
+                status: param.status
             }
             userModel.save(data, (resp) => {
                 if (!resp._id) 
