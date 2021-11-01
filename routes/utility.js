@@ -16,6 +16,12 @@ router.get('/get-invoices', authenticate, (req, res) => {
     })
 })
 
+router.get('/get-orders', authenticate, (req, res) => {
+    Utility.get_orders(req.query, (state) => {
+        Util.resp(res).json(state)
+    })
+})
+
 router.get('/get-invoice', (req, res) => {
     Utility.get_invoice(req.query.quote_id, (state) => {
         Util.resp(res).json(state)
@@ -34,8 +40,8 @@ router.post('/generate-order', (req, res) => {
     })
 })
 
-router.get('/payment-feedback', (req, res) => { //updates invoice data
-    Utility.bill_response(req.query, (state) => {
+router.post('/payment-feedback', (req, res) => {
+    Utility.bill_response(Util.param_extract(req), (state) => {
         Util.resp(res).json(state)
     })
 })

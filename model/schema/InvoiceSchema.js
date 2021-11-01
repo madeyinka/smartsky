@@ -12,7 +12,9 @@ var SchemaDef = new Schema({
     email:{type:String},
     issue_date:{type:Date},
     due_date:{type:Date},
-    user:{type:Object},
+    user:{type:String},
+    reference:{type:String},
+    trans:{type:String},
     status: {type:String, enum:["Unpaid", "Paid", "Cancelled"], default:"Unpaid"}
 },{timestamps:true})
 

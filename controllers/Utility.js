@@ -45,6 +45,16 @@ var Utility = {
         })
     },
 
+    get_orders: (param, callback)  => {
+        var orderModel = require('./../model/OrderModel')
+        orderModel.findAll((Util.param_filter(param)), (state) => {
+            if (!state.error) {
+                return callback(Resp.success({msg:state.length + " result(s) found", total:state.length, resp:state}))
+            } else 
+                return callback(Resp.error({msg:"No result found", resp:null}))
+        })
+    },
+
     get_invoice: (identity, callback) => {
         var invoiceModel = require('./../model/InvoiceModel')
         invoiceModel.findOne({conditions:{quote_id:identity}},function(state){
@@ -89,9 +99,28 @@ var Utility = {
     },
 
     bill_response: (param, callback) => {
-        //update invoice status to paid, 
-        //generate order request with default to processing, 
-        //generate track ID for user
+        var invoiceModel = require('./../model/InvoiceModel')
+        invoiceModel.findOne({conditions:{_id:param.identity}}, (state) => {
+            if (state) {
+                const bill_data = {status:param.status,reference:param.reference,trans:param.trans}
+                invoiceModel.update(bill_data, {_id:param.identity}, (resp)=>{
+                    if (resp._id) {
+                        const order_data = {uuid:Util.rand_str(8, '1234567890'),invoice:resp.uuid,quote:resp.quote_id,user:resp.user,status:"complete",track_id:Util.rand_str(15),method:param.method}
+                        var orderModel = require('./../model/OrderModel')
+                        orderModel.findOne({conditions:{invoice:resp.uuid}}, (response) => {
+                            if (!response) {
+                                orderModel.save(order_data, (orderInfo) => {
+                                    if (orderInfo._id) {
+                                        return callback(Resp.success({msg:"Order has been generated", resp:orderInfo}))
+                                    }
+                                })
+                            } else 
+                                return callback(Resp.error({msg:"Order already exists."}))
+                        })
+                    }
+                })
+            }
+        })
     }
 }
 
