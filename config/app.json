@@ -24,7 +24,8 @@
     "page_start": 1,
     "rounds": 15,
     "subject": {
-        "verify": "Email Confirmation"
+        "verify": "Email Confirmation",
+        "waybill": "Cargo Waybill"
     },
     "site_url":"http://localhost:4200/main/index"
 }

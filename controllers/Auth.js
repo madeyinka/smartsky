@@ -32,7 +32,7 @@ const initAuth = {
                 if (!resp._id) 
                     return callback(Resp.error({msg:"User information already exists", resp:null}))
                 else {
-                    return callback(Resp.success({msg: "User account created", resp:resp}))
+                    return callback(Resp.success({msg: "User account created", resp:resp})) //to be removed upon deployment
                     // const option = {email:resp.email,subject:_config.subject.verify,message:verify(resp)}
                     // mailer.sendMail(option, (msg) => {
                     //     if (msg && msg.id) 
@@ -117,8 +117,7 @@ const initAuth = {
     userContext: (param, callback) => {
         userModel.findOne({conditions:{_id:param}}, (user) => {
             if (user) {
-                const id = user._id
-                return callback(Resp.success({msg:"user information found", resp:id}))
+                return callback(Resp.success({msg:"user information found", resp:user}))
             } else {
                 return callback(Resp.error({msg:"Unauthorized user"}))
             }

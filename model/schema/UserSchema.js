@@ -12,7 +12,7 @@ var SchemaDef = new Schema({
     phone: {type:String, default:""},
     password: {type:String},
     passkey: {type:String, default:""},
-    type: {type:String, enum:["individual", "organisation", "agent", "admin"], default:"regular"},
+    type: {type:String, enum:["individual", "organisation", "agent", "admin"], default:"individual"},
     address: {type:String, default:""},
     state: {type:String, default:""},
     lga:{type:String, default:""},

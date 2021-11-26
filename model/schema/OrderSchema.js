@@ -8,6 +8,7 @@ var SchemaDef = new Schema({
     invoice: {type:String, default:""},
     quote: {type:String, default:""},
     user: {type:String, default:""},
+    item:{type:String},
     method: {type:String, enum:["dropoff", "card", "transfer"]},
     status: {type:String, enum:["complete", "pending"], default:"pending"},
     track_id: {type:String, default:""},

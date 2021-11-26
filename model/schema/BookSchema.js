@@ -24,7 +24,7 @@ var Schema = mongoose.Schema,
     insurance:{type:String},
     packaging:{type:String},
     user: {type:String},
-    list:{type:String},
+    item:{type:String},
     description:{type:String},
     status: {type:String, enum:["pending","active"], default:"pending"}
 }, {timestamps:true})

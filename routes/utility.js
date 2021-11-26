@@ -35,7 +35,7 @@ router.get('/invoice-by-identity', (req, res) => {
 })
 
 router.post('/generate-order', (req, res) => {
-    Utility.gen_order(req, (state) => {
+    Utility.generate_order(Util.param_extract(req), (state) => {
         Util.resp(res).json(state)
     })
 })
