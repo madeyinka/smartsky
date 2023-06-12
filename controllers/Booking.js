@@ -6,7 +6,7 @@ const initBooking = {
 
     make_booking: (req, callback) => {
         const param = req.body
-        const data = {uuid:Util.rand_str(8, '0123456789'),origin:param.origin,destination:param.destination,shiping_date:param.shiping_date,
+        const data = {uuid:Util.rand_str(8, '0123456789'),origin:param.origin,destination:param.destination,shiping_date:new Date(param.shiping_date),
         service_type:param.service_type,location:param.location,receiver:param.receiver,length:param.length,width:param.width,height:param.height,quantity:param.quantity,weight:param.weight,cost:param.cost,
         dim_weight:param.dim_weight,act_weight:param.act_weight,charge_weight:param.charge_weight,express:param.express,insurance:param.insurance,packaging:param.packaging,user:req.userInfo.id,status:param.status}
         bookModel.save(data, (resp) => {
